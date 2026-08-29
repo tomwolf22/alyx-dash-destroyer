@@ -13,9 +13,9 @@ app = FastAPI()
 
 # Possible base URLs (use the one that works)
 OPENWEBUI_BASE_URLS = [
-    "http://alyxai.net:8080",
-    "https://alyx-open-webui-production.up.railway.app:8080",
-    "http://alyx-open-webui.railway.internal:8080",
+    "http://alyxai.net",
+    "https://alyx-open-webui-production.up.railway.app",
+    "http://alyx-open-webui.railway.internal",
 ]
 OPENWEBUI_BASE = os.getenv("OPENWEBUI_BASE", OPENWEBUI_BASE_URLS[0])  # Default to first URL
 OPENWEBUI_API_KEY = os.getenv("OPENWEBUI_API_KEY")
