@@ -24,7 +24,7 @@ if not OPENWEBUI_API_KEY:
 
 client = httpx.AsyncClient(base_url=OPENWEBUI_BASE)
 
-@app.post("/api/v1/chat/completions")
+@app.post("/api/chat/completions")  # Updated endpoint
 async def proxy_chat_completions(request: Request):
     # Log the raw request body
     body = await request.body()
@@ -43,7 +43,7 @@ async def proxy_chat_completions(request: Request):
     headers = {"Authorization": f"Bearer {OPENWEBUI_API_KEY}"}
 
     async def forward_stream():
-        async with client.stream("POST", "/api/v1/chat/completions", content=body, headers=headers) as response:
+        async with client.stream("POST", "/api/chat/completions", content=body, headers=headers) as response:  # Updated endpoint
             if response.status_code != 200:
                 error_detail = await response.aread()
                 logger.error(f"OpenWebUI error: {error_detail}")
